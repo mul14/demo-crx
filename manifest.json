@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "Hello",
+  "version": "1.0",
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
+  "host_permissions": [
+    "*://*.github.com/*",
+    "*://github.com/*"
+  ],
+  "optional_host_permissions": [
+    "*://*/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.github.com/*",
+        "*://github.com/*"
+      ],
+      "run_at": "document_end", 
+      "js": ["contentScript.js"],
+      "all_frames": false
+    }
+  ]
+}
